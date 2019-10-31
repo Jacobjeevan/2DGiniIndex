@@ -79,7 +79,7 @@ class GiniObject:
     #Optional parameters: dims (for # of dimensions to be returned from PCA).
     def runTSNE(self, dims=None):
         if dims is None:
-            dims = 10
+            dims = 0
         xpca = PCA(n_components=dims).fit_transform(np.transpose(self.counts))
         self._TSNEcoords = TSNE(learning_rate=500).fit_transform(xpca)
 
