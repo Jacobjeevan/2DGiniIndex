@@ -116,7 +116,7 @@ class GiniObject:
                 if sum(clusID) > 0:
                     self.allgini[i, j] = self.make2DGini(coords, clusID, genelist[i], j)
                 else:
-                    self.allgini[i, j] = 0
+                    self.allgini[i, j] = -1
         self.SaveGini()
 
     #Save all the Gini values in a CSV file in the directory of the GiniPackage python script
