@@ -79,14 +79,12 @@ Methods:
         Desc: runTSNE calculates tSNE coordinates. Run it if you do not have t-SNE coordinates.
         Parameters (optional): dims (for # of dimensions to be returned from PCA). Default is 0.
     
-    type_check(self, genelist, thresval=None)
+    type_check(self, genelist)
         Desc: Checks if all parameters are available for calculating gini coeff and plotting 2D Gini. Not intended for direct usage.
         Paramers: List of genes and a list of threshold values.
     
-    DrawGini(self, genelist, thresval=None)
+    DrawGini(self)
         Desc: DrawGini method calls make2DGini to draw 2D Gini plot.
-        Parameters: List of genes to plot a 2D gini curve for.
-        Optional: List of threshold value(s) corresponding to each gene in genelist. If not provided, average counts for each gene is taken as threshold value
         
     SaveGini(self)
         Desc: Saves Gini RMSD Values for each gene (row) and cluster (column) in a CSV file.
@@ -100,7 +98,6 @@ Methods:
     computeGini(self, pop, val)
         Desc: Calculates gini coefficient
         Not intended for direct usage. Please use DrawGini method
-
 
     Default Usage:
     
