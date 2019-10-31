@@ -1,17 +1,21 @@
-///////////////////////// 2D Gini Index ///////////////////////////////////////
+//////////////////////////////////////////////////// 2D Gini Index ///////////////////////////////////////
 
 Code by: Jacob John Jeevan.
 
-///////////////////////// THANKS /////////////////////////////////////////////
+///////////////////////////////////////////////////// THANKS /////////////////////////////////////////////
 
 Special thanks to Dr. Jake Chen, Dr. Thanh Nguyen, Dr. Xu Nuo and Zongliang Yue.
 
-///////////////////////// USAGE //////////////////////////////////////////////
+////////////////////////////////////////////////////// USAGE //////////////////////////////////////////////
 
 Class Gini Object:
     
     Allows user to create a new instance of Gini Object. Each Gini Object
     corresponds to a new set of data.
+    
+    Subsequent methods allow user to calculate Gini RMSD values for every
+    gene in each cluster. If a gene is non-expressed in one cluster, then
+    value of -1 is returned.
     
 Class Parameters (Optional):
 
@@ -42,8 +46,12 @@ Methods:
             Alternatively user can use self.compile method for csv file with gene and header information
         Parameters: numpy m x n matrix; m genes and n cell samples
     
-    setTSNE(self, genes)
+    setTSNE(self, fname)
         Desc: Set t-SNE coordinates (fname: csv file with rownames, x and y coordinates as 1, 2nd and 3rd columns of the file)
+        Parameters: csv file name (with path if not in the same directory)
+    
+    setTSNE2(self, fname)
+        Desc: Alternative method; Set coordinates (fname: csv file with x and y coordinates as 1 and 2nd columns of the file)
         Parameters: csv file name (with path if not in the same directory)
     
     setGenes(self, genes)
@@ -60,8 +68,7 @@ Methods:
     
     runTSNE(self, dims=None)    
         Desc: runTSNE calculates tSNE coordinates. Run it if you do not have t-SNE coordinates.
-        Parameters (optional): dims (for # of dimensions to be returned from PCA). Default is 10.
-        
+        Parameters (optional): dims (for # of dimensions to be returned from PCA). Default is 0.
     
     type_check(self, genelist, thresval=None)
         Desc: Checks if all parameters are available for calculating gini coeff and plotting 2D Gini. Not intended for direct usage.
@@ -71,6 +78,9 @@ Methods:
         Desc: DrawGini method calls make2DGini to draw 2D Gini plot.
         Parameters: List of genes to plot a 2D gini curve for.
         Optional: List of threshold value(s) corresponding to each gene in genelist. If not provided, average counts for each gene is taken as threshold value
+        
+    SaveGini(self)
+        Desc: Saves Gini RMSD Values for each gene (row) and cluster (column) in a CSV file.
     
     make2DGini(self, coords, clusID, gene, cluster)
         Desc: Method to set clusterIDs (2D Gini) and to draw 2D Gini curve. Calls computeGini for calculating gini coeff
