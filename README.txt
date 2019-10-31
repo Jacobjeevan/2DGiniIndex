@@ -1,5 +1,9 @@
 //////////////////////////////////////////////////// 2D Gini Index ///////////////////////////////////////
 
+Calculates Gini RMSD values for each gene/cluster.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Code by: Jacob John Jeevan.
 
 ///////////////////////////////////////////////////// THANKS /////////////////////////////////////////////
@@ -7,6 +11,11 @@ Code by: Jacob John Jeevan.
 Special thanks to Dr. Jake Chen, Dr. Thanh Nguyen, Dr. Xu Nuo and Zongliang Yue.
 
 ////////////////////////////////////////////////////// USAGE //////////////////////////////////////////////
+
+Required packages:
+
+    numpy, pandas, mathplotlib, sklearn.
+    Install these packages before using pip3 command (ex: sudo pip3 install numpy).
 
 Class Gini Object:
     
@@ -99,5 +108,7 @@ Methods:
     If genes-cell sample matrix does not contain gene/cell sample information, use setCounts, setGenes,
     setTSNE and setCluster to set all of them manually.
     
-    Call DrawGini method with genes list.
+    Call DrawGini method.
+    
+    Refer to tester.py for sample usage. Sample data files are available under Data folder.
 
