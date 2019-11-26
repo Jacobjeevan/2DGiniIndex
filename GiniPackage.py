@@ -114,7 +114,7 @@ class GiniObject:
                     if (self.counts[geneind, k] > self.thresval):
                         clusID[k] = 1
                 if sum(clusID) > 0:
-                    self.allgini[i, j] = self.make2DGini(coords, clusID, genelist[i], j)
+                    self.allgini[i, j] = self.make2DGini(coords, clusID, genelist[i], j, draw)
                 else:
                     self.allgini[i, j] = -1
         self.SaveGini()
@@ -127,7 +127,7 @@ class GiniObject:
 
     #Method to set clusterIDs (2D Gini) and to draw 2D Gini curve. Calls computeGini for calculating gini coeff
     #Not intended for direct usage. Please use DrawGini method
-    def make2DGini(self, coords, clusID, gene, cluster, draw=None):
+    def make2DGini(self, coords, clusID, gene, cluster, draw):
         anglelist = np.arange(0, 360, 360/1000)
         numCluster = len(np.unique(clusID))
         # x is your matrix (in this case, tSNE coordinates), numCluster is a 1D matrix/vector indicating which clusterID each coordinate belongs to
@@ -144,7 +144,8 @@ class GiniObject:
                 valarr = np.subtract(value, min(value))
                 valarr = np.asarray(valarr)
                 gini[j, i] = self.computeGini(np.ones((valarr.shape[0],1)), valarr)
-            plt.polar(anglelist, gini, linewidth=0.25)
+            if draw:
+                plt.polar(anglelist, gini, linewidth=0.25)
         if draw:
             plt.savefig(gene+"_Cluster"+str(cluster)+".png", bbox_inches='tight')
             plt.close()
