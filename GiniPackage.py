@@ -99,7 +99,7 @@ class GiniObject:
 
     #DrawGini method calls make2DGini to draw 2D Gini plot
     #parameters: Optional parameter to draw and save the 2D Gini Index plots
-    def DrawGini(self, draw="False"):
+    def DrawGini(self, draw=False):
         genelist =  self.allgenes
         self.type_check(genelist)
         clusters = len(np.unique(self.clusters))
