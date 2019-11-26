@@ -144,8 +144,7 @@ class GiniObject:
                 valarr = np.subtract(value, min(value))
                 valarr = np.asarray(valarr)
                 gini[j, i] = self.computeGini(np.ones((valarr.shape[0],1)), valarr)
-            if draw:
-                plt.polar(anglelist, gini, linewidth=0.25)
+            plt.polar(anglelist, gini, linewidth=0.25)
         if draw:
             plt.savefig(gene+"_Cluster"+str(cluster)+".png", bbox_inches='tight')
             plt.close()
